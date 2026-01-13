@@ -6,8 +6,8 @@
 FILE* openFile(char *);
 
 typedef struct {
-    char id[10];
-    char name[20];
+    char* id;
+    char* name;
     int minor[5];
     int major[5];
 } Student;
@@ -19,14 +19,31 @@ int main(){
     fscanf(fpInp, "%d", &noOfStudents);
     printf("Number of students are:%d\n", noOfStudents);
 
-    int arrStudents[noOfStudents];
+    Student* arrStudents[noOfStudents];
 
     for(int i=0; i<noOfStudents; i++){
         Student* s = (Student*) malloc(sizeof(Student));
-        fscanf(fpInp, "%s", s->name);
+        // char* id = "test"; 
+        char *id = malloc(50 * sizeof(char));
+        fscanf(fpInp, "%s", id);
+        printf("id is: %s \n", id);
+
+        char *name = malloc(50 * sizeof(char));
+        fscanf(fpInp, "%s", name);
+        printf("name is: %s \n", name);
+
+        for(int i=0; i<5; i++){
+            fscanf(fpInp, "%d", &s->minor[i]);
+        }
+
+        for(int i=0; i<5; i++){
+            fscanf(fpInp, "%d", &s->major[i]);
+        }
     }
    
-   printf("%c", arrStudents[0]->name);
+//    Student* st = arrStudents[0]; 
+//    char* name = &(st->id); 
+//    printf("name is: %s", name);
    
    
 }
