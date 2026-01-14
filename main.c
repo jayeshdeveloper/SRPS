@@ -3,6 +3,18 @@
 #include <string.h>
 #include <math.h>
 
+/*
+    input.txt format
+    40 (shows no. of students)
+    25ABC01 Jayesh 18 72 20 68 15 19 17 75 19 80 => detais of individual student, where  values are:
+        id, 
+        name, 
+        minor marks of 5 subjects (out of 40)
+        major marks of 5 subjects (out of 60)
+
+*/
+
+
 typedef struct {
     char* id;
     char* name;
