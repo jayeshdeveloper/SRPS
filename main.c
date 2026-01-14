@@ -26,22 +26,18 @@ int main(){
 
     for(int i=0; i<noOfStudents; i++){
         Student* student = (Student*) malloc(sizeof(Student));
-        // char* id = "test"; 
         char *id = malloc(50 * sizeof(char));
         fscanf(fpInp, "%s", id);
         student->id=id;
-        // printf("id is: %s \n", s->id);
 
         char *name = malloc(50 * sizeof(char));
         fscanf(fpInp, "%s", name);
-        // printf("name is: %s \n", name);
         student->name=name;
 
         for(int i=0; i<5; i++){
             fscanf(fpInp, "%lf", &student->minor[i]);
         }
 
-        // printf("%lf", s->minor[1]);
 
         for(int i=0; i<5; i++){
             fscanf(fpInp, "%lf", &student->major[i]);
