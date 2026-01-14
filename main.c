@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <stdbool.h>
 
 /*
     input.txt format
@@ -33,7 +34,8 @@ double printStudent(Student* student);
 void printFinalReport(Student* arrStudents[], int noOfStudents);
 char* findGrade(double marks);
 void allocateCategory(double marks, int* noOfStudentsPerCategoryArr);
-
+bool isMarksValide(double scored, double maxMarks);
+void validateInput(Student* arrStudents[], int noOfStudents);
 
 
 int main(){   
@@ -44,7 +46,10 @@ int main(){
     printf("Number of students are:%d\n", noOfStudents);
 
     Student* arrStudents[noOfStudents];
+    char* arrSubjects[] = {"IOT", "BCT", "OS", "CN", "DDPC"};
 
+    bool isAnyError=false;
+ 
     for(int i=0; i<noOfStudents; i++){
         Student* student = (Student*) malloc(sizeof(Student));
         char *id = malloc(50 * sizeof(char));
@@ -55,17 +60,32 @@ int main(){
         fscanf(fpInp, "%s", name);
         student->name=name;
 
-        for(int i=0; i<5; i++){
-            fscanf(fpInp, "%lf", &student->minor[i]);
+        for(int j=0; j<5; j++){
+            fscanf(fpInp, "%lf", &student->minor[j]);
+            if(!isMarksValide(student->minor[j],40.0)){
+                printf("ERROR: Invalid Marks (Minor marks %.1lf should be in range [0,40] ).", student->minor[j]);
+                printf(" msg: \"student with id %s has invalid minor marks in %s\"\n",id, arrSubjects[j]);
+                isAnyError=true;
+            }
         }
 
 
-        for(int i=0; i<5; i++){
-            fscanf(fpInp, "%lf", &student->major[i]);
+        for(int j=0; j<5; j++){
+            fscanf(fpInp, "%lf", &student->major[j]);
+            if(!isMarksValide(student->major[j],60.0)){
+                printf("ERROR: Invalid Marks (Major marks %.1lf should be in range [0,60] ).", student->major[j]);
+                printf(" msg: \"student with id %s has invalid major marks in %s\"\n",id, arrSubjects[j]);
+                isAnyError=true;
+            }
         }
         arrStudents[i]=student;
     }
    
+    validateInput(arrStudents, noOfStudents);
+
+    if(isAnyError) exit(1);
+
+
     // printArrOfStudent(arrStudents, noOfStudents);
     printFinalReport(arrStudents, noOfStudents);
    
@@ -182,4 +202,16 @@ void allocateCategory(double marks, int* noOfStudentsPerCategoryArr){
     else if (marks>=55) noOfStudentsPerCategoryArr[5]++;
     else if (marks>=50) noOfStudentsPerCategoryArr[6]++;
     else noOfStudentsPerCategoryArr[7]++;
+}
+
+void validateInput(Student* arrStudents[], int noOfStudents){
+    for(int i=0; i<noOfStudents; i++){
+        Student* student = arrStudents[i];
+        
+    }
+}
+
+bool isMarksValide(double scored, double maxMarks){
+    if(scored<0 || scored >maxMarks) return false;
+    return true;
 }
