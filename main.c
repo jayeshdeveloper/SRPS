@@ -12,9 +12,7 @@
         name, 
         minor marks of 5 subjects (out of 40)
         major marks of 5 subjects (out of 60)
-
 */
-
 
 typedef struct {
     char* id;
@@ -27,7 +25,6 @@ typedef struct {
     // char* grade; 
 } Student;
 
-
 FILE* openFile(char *);
 void printArrOfStudent(Student* arrStudents[], int noOfStudents);
 double printStudent(Student* student);
@@ -35,8 +32,10 @@ void printFinalReport(Student* arrStudents[], int noOfStudents);
 char* findGrade(double marks);
 void allocateCategory(double marks, int* noOfStudentsPerCategoryArr);
 bool isMarksValide(double scored, double maxMarks);
-void validateInput(Student* arrStudents[], int noOfStudents);
 bool isNameValid(char* name);
+bool isIdValid(char* id);
+bool isDuplicateId(char* idArr[], char* id, int sizeOfIdArr);
+void printIdArray(char* idArr[], int sizeOfIdArr);
 
 
 int main(){   
@@ -45,6 +44,7 @@ int main(){
     
     fscanf(fpInp, "%d", &noOfStudents);
     printf("Number of students are:%d\n", noOfStudents);
+    char* idArr[noOfStudents];
 
     Student* arrStudents[noOfStudents];
     char* arrSubjects[] = {"IOT", "BCT", "OS", "CN", "DDPC"};
@@ -56,6 +56,9 @@ int main(){
         char *id = malloc(50 * sizeof(char));
         fscanf(fpInp, "%s", id);
         student->id=id;
+        
+        if(!isIdValid(id) || isDuplicateId(idArr, id, i)) isAnyError=true;
+        idArr[i]=id;
 
         char *name = malloc(50 * sizeof(char));
         fscanf(fpInp, "%s", name);
@@ -85,16 +88,8 @@ int main(){
         }
         arrStudents[i]=student;
     }
-   
-    // validateInput(arrStudents, noOfStudents);
-    // if(isNameValid("hello1")){
-    //     printf("Name is valid\n");
-    // }else printf("Invalid name\n");
-
+    
     if(isAnyError) exit(1);
-
-
-    // printArrOfStudent(arrStudents, noOfStudents);
     printFinalReport(arrStudents, noOfStudents);
    
 }
@@ -212,12 +207,6 @@ void allocateCategory(double marks, int* noOfStudentsPerCategoryArr){
     else noOfStudentsPerCategoryArr[7]++;
 }
 
-// void validateInput(Student* arrStudents[], int noOfStudents){
-//     for(int i=0; i<noOfStudents; i++){
-//         Student* student = arrStudents[i];
-        
-//     }
-// }
 
 bool isMarksValide(double scored, double maxMarks){
     if(scored<0 || scored >maxMarks) return false;
@@ -236,6 +225,34 @@ bool isNameValid(char* name){
     return true;
 }
 
+bool isIdValid(char* id){
+    int length = strlen(id);
+        for(int i=0; i<length; i++){
+        char ch = id[i];
+        if((ch<'A' || ch> 'Z') && (ch<'a' || ch> 'z') && (ch<'0' || ch> '9')){
+                printf("ERROR: Invalid Id. Failed at %c. Id %s is invalid\n", ch, id);
+                return false;   
+        }
+    }
+    printf("");
+    return true; 
+}
+
+bool isDuplicateId(char* idArr[], char* id, int sizeOfIdArr){
+    for(int i=0; i<sizeOfIdArr; i++) {
+        if(strcasecmp(idArr[i], id)==0){
+            printf("ERROR: Duplicate Id Found. msg: more than one students have same id %s\n", id);
+            return true;
+        }
+    }
+    return false;
+}
+
+// void printIdArray(char* idArr[], int sizeOfIdArr){
+//     printf("printArray invoked\n");
+//     for(int i=0; i<sizeOfIdArr; i++) printf("%s ", idArr[i]);
+//     printf("\n");
+// }
 
 
 
