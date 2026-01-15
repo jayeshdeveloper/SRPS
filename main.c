@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 
-/*
+/* JAYESH JAISWAL MTECH CS
     input.txt format
     40 (shows no. of students)
     25ABC01 Jayesh 18 72 20 68 15 19 17 75 19 80 => detais of individual student, where  values are:
