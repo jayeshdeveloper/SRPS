@@ -39,7 +39,8 @@ void printIdArray(char* idArr[], int sizeOfIdArr);
 
 
 int main(){   
-    FILE * fpInp  = openFile("input.txt");
+    // FILE * fpInp  = openFile("input.txt");
+    FILE * fpInp  = openFile("invalidInput.txt");
     int noOfStudents; 
     
     fscanf(fpInp, "%d", &noOfStudents);
