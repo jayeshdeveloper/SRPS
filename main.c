@@ -36,6 +36,7 @@ char* findGrade(double marks);
 void allocateCategory(double marks, int* noOfStudentsPerCategoryArr);
 bool isMarksValide(double scored, double maxMarks);
 void validateInput(Student* arrStudents[], int noOfStudents);
+bool isNameValid(char* name);
 
 
 int main(){   
@@ -59,12 +60,16 @@ int main(){
         char *name = malloc(50 * sizeof(char));
         fscanf(fpInp, "%s", name);
         student->name=name;
+        if(!isNameValid(name)){
+            printf("msg: student with id %s has invalid name \"%s\". \n", id, name);
+            isAnyError=true;
+        }
 
         for(int j=0; j<5; j++){
             fscanf(fpInp, "%lf", &student->minor[j]);
             if(!isMarksValide(student->minor[j],40.0)){
                 printf("ERROR: Invalid Marks (Minor marks %.1lf should be in range [0,40] ).", student->minor[j]);
-                printf(" msg: \"student with id %s has invalid minor marks in %s\"\n",id, arrSubjects[j]);
+                printf(" msg: student with id %s has invalid minor marks in %s\n",id, arrSubjects[j]);
                 isAnyError=true;
             }
         }
@@ -74,14 +79,17 @@ int main(){
             fscanf(fpInp, "%lf", &student->major[j]);
             if(!isMarksValide(student->major[j],60.0)){
                 printf("ERROR: Invalid Marks (Major marks %.1lf should be in range [0,60] ).", student->major[j]);
-                printf(" msg: \"student with id %s has invalid major marks in %s\"\n",id, arrSubjects[j]);
+                printf(" msg: student with id %s has invalid major marks in %s\n",id, arrSubjects[j]);
                 isAnyError=true;
             }
         }
         arrStudents[i]=student;
     }
    
-    validateInput(arrStudents, noOfStudents);
+    // validateInput(arrStudents, noOfStudents);
+    // if(isNameValid("hello1")){
+    //     printf("Name is valid\n");
+    // }else printf("Invalid name\n");
 
     if(isAnyError) exit(1);
 
@@ -204,14 +212,33 @@ void allocateCategory(double marks, int* noOfStudentsPerCategoryArr){
     else noOfStudentsPerCategoryArr[7]++;
 }
 
-void validateInput(Student* arrStudents[], int noOfStudents){
-    for(int i=0; i<noOfStudents; i++){
-        Student* student = arrStudents[i];
+// void validateInput(Student* arrStudents[], int noOfStudents){
+//     for(int i=0; i<noOfStudents; i++){
+//         Student* student = arrStudents[i];
         
-    }
-}
+//     }
+// }
 
 bool isMarksValide(double scored, double maxMarks){
     if(scored<0 || scored >maxMarks) return false;
     return true;
 }
+
+bool isNameValid(char* name){
+    int length = strlen(name);
+    for(int i=0; i<length; i++){
+        char ch = name[i];
+        if((ch<'A' || ch> 'Z') && (ch<'a' || ch> 'z') ){
+                printf("ERROR: Invalid Name. Failed at %c. ", ch);
+                return false;   
+        }
+    }
+    return true;
+}
+
+
+
+
+
+
+
