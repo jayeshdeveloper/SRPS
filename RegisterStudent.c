@@ -5,7 +5,8 @@
 #include <stdbool.h>
 #include "StudentUtil.h"
 
-void registerStudents(int noOfStudents, Student** arrStudents){
+int registerStudents(int noOfStudents, Student** arrStudents){
+    // printf("Method invocked: registerStudents()\n");
       FILE * fpInp  = openFile("input.txt");
     // FILE * fpInp  = openFile("invalidInput.txt");
      
@@ -57,4 +58,6 @@ void registerStudents(int noOfStudents, Student** arrStudents){
     }
     
     if(isAnyError) exit(1);
+    // printf("Reached end of method: registerStudent()");
+    return noOfStudents;
 }

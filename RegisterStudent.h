@@ -1,1 +1,1 @@
-void registerStudents(int noOfStudents, Student** arrStudents);
+int registerStudents(int noOfStudents, Student** arrStudents);

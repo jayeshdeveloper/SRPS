@@ -5,8 +5,6 @@
 #include <stdbool.h>
 #include "student.h"
 
-void printArrOfStudent(Student* arrStudents[], int noOfStudents);
-double printStudent(Student* student);
 char* findGrade(double marks);
 void allocateCategory(double marks, int* noOfStudentsPerCategoryArr);
 
