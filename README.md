@@ -124,9 +124,10 @@ Function:
 
 ## 4. How to Compile and Run
 
-<!-- ```bash -->
+```bash
 gcc main.c StudentUtil.c RegisterStudent.c Printers.c
-./a.out
+./a.out 
+ ``` 
 
 Output when user enters invalid data
 <img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/51e965ab-7402-4741-b0c5-b3515c92c35b" />
