@@ -14,22 +14,6 @@ Each module has its own .h and .c file and can be compiled separately.
 
 ## 3. Module Specification
 
-# Student Registration System (SRPS)
-
-## 1. Introduction
-This project implements a modular Student Registration and Result Processing System in C.
-
-## 2. Modularization
-The project is divided into the following modules:
-- StudentUtil – validation and grading functions  
-- RegisterStudent – reading input and creating students  
-- Printers – printing reports  
-- Main – program control  
-
-Each module has its own .h and .c file and can be compiled separately.
-
-## 3. Module Specification
-
 
 ### Module 1: StudentUtil Module
 
@@ -137,12 +121,6 @@ Function:
      - Call printFinalReport  
    - Output: Displays complete student report  
 
-
-## 4. How to Compile and Run
-
-```bash
-gcc main.c StudentUtil.c RegisterStudent.c Printers.c
-./a.out
 
 ## 4. How to Compile and Run
 
