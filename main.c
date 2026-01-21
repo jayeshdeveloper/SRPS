@@ -26,7 +26,7 @@ bool isIdValid(char* id);
 bool isDuplicateId(char* idArr[], char* id, int sizeOfIdArr);
 
 int main(){  
-    int noOfStudents; 
+    int noOfStudents=0; 
     Student* arrStudents[100]; 
     noOfStudents = registerStudents(noOfStudents, arrStudents);
     printFinalReport(arrStudents, noOfStudents);
