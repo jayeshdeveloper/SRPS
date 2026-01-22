@@ -42,7 +42,7 @@ FILE* openFile(char * fileName){
 }
 
 
-bool isMarksValide(double scored, double maxMarks){
+bool isMarksValid(double scored, double maxMarks){
     if(scored<0 || scored >maxMarks) return false;
     return true;
 }

@@ -129,12 +129,33 @@ gcc main.c StudentUtil.c RegisterStudent.c Printers.c
 ./a.out 
  ``` 
 
+Code Flow
+<img width="3880" height="934" alt="image" src="https://github.com/user-attachments/assets/09ea32c5-7efb-420c-b6c1-b62f0424bc17" />
+
+## Algo/Pseudo Code
+1.	Open input.txt
+fpInp = openFile()
+2.	If(fpInp==NULL) print Error
+3.	int noOfStudents
+4.	read no. of students. 
+5.	int arrOfStudents[noOfStudents]
+6.	for(int i->0 to noOfStudents){
+  read each student data
+    check:
+    isIdValid()
+    isDuplicateId()j
+  for each marks: isMarksValid()
+}
+7.	printFinalReport(arrStudents, noOfStudents){
+//this prints marks of each students and the result status
+}
+
+
 Output when user enters invalid data
 <img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/51e965ab-7402-4741-b0c5-b3515c92c35b" />
 
 Output when user enters valid data
 <img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/ff6f4280-fd33-4da9-bb59-86240930c903" />
 
-Code Flow
-<img width="3880" height="934" alt="image" src="https://github.com/user-attachments/assets/09ea32c5-7efb-420c-b6c1-b62f0424bc17" />
+
 

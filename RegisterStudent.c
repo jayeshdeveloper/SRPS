@@ -38,7 +38,7 @@ int registerStudents(int noOfStudents, Student** arrStudents){
 
         for(int j=0; j<5; j++){
             fscanf(fpInp, "%lf", &student->minor[j]);
-            if(!isMarksValide(student->minor[j],40.0)){
+            if(!isMarksValid(student->minor[j],40.0)){
                 printf("ERROR: Invalid Marks (Minor marks %.1lf should be in range [0,40] ).", student->minor[j]);
                 printf(" msg: student with id %s has invalid minor marks in %s\n",id, arrSubjects[j]);
                 isAnyError=true;
@@ -48,7 +48,7 @@ int registerStudents(int noOfStudents, Student** arrStudents){
 
         for(int j=0; j<5; j++){
             fscanf(fpInp, "%lf", &student->major[j]);
-            if(!isMarksValide(student->major[j],60.0)){
+            if(!isMarksValid(student->major[j],60.0)){
                 printf("ERROR: Invalid Marks (Major marks %.1lf should be in range [0,60] ).", student->major[j]);
                 printf(" msg: student with id %s has invalid major marks in %s\n",id, arrSubjects[j]);
                 isAnyError=true;
