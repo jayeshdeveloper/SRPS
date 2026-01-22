@@ -133,6 +133,8 @@ Code Flow
 <img width="3880" height="934" alt="image" src="https://github.com/user-attachments/assets/09ea32c5-7efb-420c-b6c1-b62f0424bc17" />
 
 ## Algo/Pseudo Code
+
+```bash
 1.	Open input.txt
 fpInp = openFile()
 2.	If(fpInp==NULL) print Error
@@ -149,6 +151,8 @@ fpInp = openFile()
 7.	printFinalReport(arrStudents, noOfStudents){
 //this prints marks of each students and the result status
 }
+
+```
 
 
 Output when user enters invalid data
