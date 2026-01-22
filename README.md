@@ -153,6 +153,8 @@ fpInp = openFile()
 }
 
 ```
+## Test Case Plan
+<img width="2447" height="729" alt="image" src="https://github.com/user-attachments/assets/0716bc60-8bd6-43c9-af62-565ab357d2c5" />
 
 
 Output when user enters invalid data
